@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { GetStaticProps } from "next";
 import { useTranslation, Trans } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import kodikas from '../assets/kodikas.png'
 
 const Navbar = () => {
 	const { t, i18n } = useTranslation("common");
@@ -9,14 +10,15 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-screen flex items-center justify-between flex-wrap p-4 lg:px-48">
-        <div className="flex items-center flex-shrink-0 text-white mr-6 lg:mr-72">
+      <nav className="fixed top-0 left-0 w-screen flex items-center justify-between flex-wrap p-4 lg:px-32">
+        
+        <div className="flex flex-shrink-0 items-center">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="w-100 h-10 mr-2"
-            alt="Logo"
+            src={kodikas.src}
+            className="w-100 h-10"
           />
         </div>
+
         <div className="block lg:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -38,24 +40,29 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
+
         <div
-          className={`w-full block ml-auto lg:flex lg:items-center lg:w-auto ${
-            isOpen ? "block" : "hidden"
+          className={`w-full ml-auto lg:flex lg:items-center lg:w-auto xs:max-lg:flex-col ${
+            isOpen ? 'flex' : 'hidden'
           }`}
         >
           {[
             ["menu.home", "/"],
             ["menu.about", "/"],
+            ["menu.qualifications", "/"],
             ["menu.services", "/"],
             ["menu.projects", "/"],
             ["menu.blog", "/"],
           ].map(([title, url]) => (
             <a
-							key={title}
+              key={title}
               href={url}
-              className="rounded-lg px-3 py-2 text-base font-semibold text-white hover:text-yellow-400"
+              className="px-4 py-2 text-base font-bold text-white text-amber-100 hover:text-yellow-400 xs:max-lg:text-right xs:text-sm"
+              style={{
+                'textShadow': '1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000'
+              }}
             >
-              {t(title)}
+              { t(title) }
             </a>
           ))}
           {/* <div>
@@ -71,8 +78,8 @@ const Navbar = () => {
 
 export default Navbar;
 
-export const getStaticProps: GetStaticProps<{}> = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale ?? "en", ["common"])),
-  },
-});
+// export const getStaticProps: GetStaticProps<{}> = async ({ locale }) => ({
+//   props: {
+//     ...(await serverSideTranslations(locale ?? "en", ["common"])),
+//   },
+// });

@@ -2,8 +2,14 @@
     "menu": {
         "home": "Home",
         "about": "About",
+        "qualifications": "Qualifications",
         "services": "Services",
         "projects": "Projects",
         "blog": "Blog"
+    },
+    "firstSection": {
+        "firstLine": "nice to e-meet you.",
+        "secondLine": "the name,",
+        "thirdLine": "competent software engineer."
     }
 }
