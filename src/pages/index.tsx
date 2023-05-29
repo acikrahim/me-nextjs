@@ -194,7 +194,7 @@ export default function LandingPage() {
 
   return (
     <>
-      <InfoModal show={modalShow} title={'What I Do'}>
+      <InfoModal show={modalShow} title={'What I Do'} handleClose={() => {setModalShow(!modalShow)}}>
         <div className="p-6 space-y-6">
           <ul className="max-w-md space-y-1 text-gray-500 list-inside dark:text-gray-400">
             {
